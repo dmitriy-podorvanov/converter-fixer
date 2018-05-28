@@ -18,15 +18,5 @@ $eur = $currencies['rates']['EUR'];
 $usd = $currencies['rates']['USD'];
 $mdl = $currencies['rates']['MDL'];
 
-// Дз
-// 1) Привести к формату 0000.0000
-// 2) вместо skills создать форму:
-// 1 select>option > ключ  : оформить при помощи foreach() rates
-// 2 button > значение
-// 3) пустить два запроса 1 текущий 2 предыдущий   сравнить динамику 
-//
-
-
-
 
 ?>
