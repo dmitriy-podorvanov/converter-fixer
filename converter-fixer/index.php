@@ -10,6 +10,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+.diff{
+  margin-left: 10px;
+  font-size: 80%;
+  color: grey;
+}
+
 </style>
 <body class="w3-light-grey">
 
@@ -28,34 +35,57 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           <!-- Data in start -->
           <p><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i><?php print $date?></p>
-          <p><i class="fa fa-dollar fa-fw w3-margin-right w3-large w3-text-teal"></i><?php print $usd?></p>
-          <p><i class="fa fa-eur fa-fw w3-margin-right w3-large w3-text-teal"></i><?php print $usd?></p>
-          <p><i class="fa fa-money fa-fw w3-margin-right w3-large w3-text-teal"></i><?php print $mdl ?></p>
+          <p><i class="fa fa-dollar fa-fw w3-margin-right w3-large w3-text-teal"></i><?php print printf($format, round($usd, 4)) ?> 
+          <span class="diff"><?php print ($usd-$y_usd)?></span>
+          <?php if(($usd-$y_usd) > 0) {?>
+          <i class="fa fa-caret-up" style="color:lightgreen;" aria-hidden="true"></i>
+          <?php } ?>
+          <?php if(($usd-$y_usd) < 0) {?>
+          <i class="fa fa-caret-down" style="color:red;" aria-hidden="true"></i>
+          <?php } ?>
+
+          
+          </p>
+
+          <p><i class="fa fa-eur fa-fw w3-margin-right w3-large w3-text-teal"></i><?php print printf($format, round($eur, 4))?>
+          
+          <span class="diff"><?php print ($eur-$y_eur)?></span>
+          <?php if(($eur-$y_eur) > 0) {?>
+          <i class="fa fa-caret-up" style="color:lightgreen;" aria-hidden="true"></i>
+          <?php } ?>
+          <?php if(($eur-$y_eur) < 0) {?>
+          <i class="fa fa-caret-down" style="color:red;" aria-hidden="true"></i>
+          <?php } ?>
+  
+
+          </p>
+          <p><i class="fa fa-money fa-fw w3-margin-right w3-large w3-text-teal"></i><?php print printf($format, round($mdl, 4)) ?>
+          
+          <span class="diff"><?php print ($mdl-$y_mdl)?></span>
+          <?php if(($mdl-$y_mdl) > 0) {?>
+          <i class="fa fa-caret-up" style="color:lightgreen;" aria-hidden="true"></i>
+          <?php } ?>
+          <?php if(($mdl-$y_mdl) < 0) {?>
+          <i class="fa fa-caret-down" style="color:red;" aria-hidden="true"></i>
+          <?php } ?>
+  
+          
+          </p>
           <!-- Data in end -->
 
           <hr>
+          <select name="" id="">
+          
+          <?php foreach ($currencies['rates'] as $key => $value) {
+               ?>
+          
+          <option value="<?php print $key ?>"><?php print $key." -> ".$value ?></option>
+          
+          <?php }; ?>
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>Adobe Photoshop</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
-          </div>
-          <p>Photography</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-              <div class="w3-center w3-text-white">80%</div>
-            </div>
-          </div>
-          <p>Illustrator</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
-          </div>
-          <p>Media</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
-          </div>
-          <br>
-
+          </select>
+          
+          
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
           <p>English</p>
           <div class="w3-light-grey w3-round-xlarge">
